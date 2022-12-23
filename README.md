@@ -1,4 +1,4 @@
-# Dart 요약
+# **Dart 요약**
 
 (참고 강의 링크: [Nomad Coders - Dart 시작하기](https://nomadcoders.co/dart-for-beginners))
 
@@ -227,3 +227,74 @@ class Player with Strong, Walk {
 }
 ```
 
+[맨 위로](#dart-요약)
+
+---
+
+# **Flutter 요약**
+
+## 기본 구조
+
+main.dart 파일의 **main()** 함수 에서 시작한다. 그래고 main 함수 안의 **runApp()** 이 플러터의 앱을 시작한다. 해당 함수에게 실행할 위젯을 전달한다.
+
+```dart
+void main() {
+    runApp(MyApp())
+}
+```
+
+MyApp은 **StatelessWidget** 를 상속하는데, 화면의 변화가 없을 때 사용한다. 여기서 StatelessWidget이 가진 **build()** 메서드를 override 해야한다. 화면에 그려질 것들을 build 안에 구현하여 return 한다. **MaterialApp()** 은 Material 디자인을 사용하는 App 클래스로, 이 안에 위젯들을 구현한다. **home** 은 가장 먼저 보여지는 화면(최상위 경로에 있는 화면)으로 **Scaffold** 클래스를 사용해 기본적인 레이아웃 구조(앱바, 본문, 플로팅 버튼 등)를 구현한다.
+
+```dart
+class MyApp extends StatelessWidget {
+    @override
+    Widget build(BuildContext context) {
+        return MaterialApp(
+            home: Scaffold(
+                ...
+            ),
+        );
+    }
+}
+```
+
+## 기타
+
+위젯은 key라는 것을 가지고 있고, ID처럼 쓰인다. Flutter는 위젯을 식별하기 위해 ID를 쓴다.
+
+
+- SingleChildScrollView: 화면을 스크롤 할 수 있도록 하는 위젯
+- Padding: 원하는 위치에 여백을 넣기
+- Column: 하위 요소들을 세로로 배치할 때 사용
+- Row: 하위 요소들을 가로로 배치할 때 사용
+- Text: 문자열을 넣을 때
+- SizedBox: 지정한 크기의 박스를 넣음(중간 여백을 넣을 때)
+- Container
+- Transform.scale, Trnasform.translate
+
+
+setState
+
+Buildcontext
+
+context 부모요소들의 모든 정보를 가지고 있음.
+
+initState: build보다 먼저 실행되며 한 번만 실행됨.
+
+dispose: widget이 화면에서 사라질 때 실행됨
+
+
+Future 미래에 받을 값의 타입
+
+async 함수 안에 await
+
+FutureBuilder(future: builder:(context, snapshot){})
+
+ListView.builder(scrollDirection: itemCount: itemBuilder:(context, index){})
+ListView.separated(scrollDirection: itemCount: itemBuilder:(context, index){} separatorBuilder:(context,index)=>)
+
+GestureDetector()
+
+Navigator.push(context, MaterialPageRoute(builder:(context) => DetailScreen()))
+
+Hero(tag:)
